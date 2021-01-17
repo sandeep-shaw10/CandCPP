@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    
+    int test, observe,count;
+    bool found;
+    char gesture;
+
+    cin >> test;
+
+    for(int i=0; i<test; i++){
+
+        cin >> observe;
+        found = false;
+
+        for(int j=0; j<observe; j++){
+
+            cin >> gesture;
+
+            if(found){
+                continue;
+            }
+
+            if(gesture=='Y' && !found){
+                cout << "NOT INDIAN";
+                found = true;
+            }
+
+            if(gesture=='I' && !found){
+                cout << "INDIAN";
+                found = true;
+            }
+
+        }
+
+        if(!found){
+            cout << "NOT SURE";
+        }
+        
+        cout << "\n";
+    }
+
+	return 0;
+}
