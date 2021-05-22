@@ -61,3 +61,62 @@ int main()
 
     return 0; 
 }
+
+
+/*
+#include <bits/stdc++.h>
+using namespace std;
+
+void showpair(map<int, int> &m)
+{
+    for(auto &pr : m){
+        cout << pr.first << " " << pr.second << endl;
+    }
+    cout << '\n';
+}
+
+int main() 
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    
+    int test = 1;
+    unsigned long long int freq, weight, rode;
+    cin>>test;
+    
+    while(test--)
+    {
+        cin >> freq >> weight >> rode;
+        map<int, int> mass;
+        unsigned long long int balanceFactor = rode;
+        bool status = false;
+            
+        for(int i=0; i<freq; i++){
+            int x;
+            cin >> x;
+            mass[x]++;
+        }
+        
+        if(rode >= weight){
+            cout << "YES" << endl;
+        }else{
+            //Touque Check
+            for(auto &pr : mass){
+                balanceFactor += pr.first * (pr.second/2) * 2;
+                if(balanceFactor >= weight){
+                    status = true;
+                    break;
+                }
+            }
+            
+            if(status){
+                cout << "YES" << endl;
+            }else{
+                cout << "NO" << endl;
+            }
+        }
+        
+    }
+    return 0;
+}*/
