@@ -82,3 +82,25 @@ g1.assign(5, 10); // [10,10,10,10,10]
 [VECTORS](https://en.cppreference.com/w/cpp/container/vector)
 
 
+# PRE-COMPUTING PRIME NUMBERS
+```cpp
+const int limit = 1e7+5;
+int pr[limit];
+
+void seive(){
+    fill(pr + 2, pr + limit, 1);
+    for(int i = 2; i < limit; i++){
+        if(pr[i]){
+            for(int j = 2 * i; j < limit; j += i) {
+                pr[j] = 0;
+            }
+        }
+        if(i == 2){
+            pr[i] = 0;
+        };
+        pr[i] += pr[i - 1];
+    }
+}
+```
+
+
