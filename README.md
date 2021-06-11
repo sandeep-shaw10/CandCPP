@@ -103,4 +103,61 @@ void seive(){
 }
 ```
 
+# GENERAL TREE DFS 
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+typedef vector<vector<int>> vii;
+typedef vector<int> vi;
+
+void dfs(vii &edge, vi &subTree, int cur = 1, int par = -1){
+    cout << cur << "\n";
+    for(int neighb : edge[cur]){
+        if(neighb == par) { continue; }
+
+        dfs(edge, subTree, neighb, cur);
+    }
+}
+
+void solve(){
+    int n, k, u, v;
+    cin >> n >> k;
+
+    vii edge(n+1);
+    vi subtree_size(n+1);
+
+    for(int i = 0; i < n-1; i++){
+        cin >> u >> v;
+        edge[u].push_back(v);
+        edge[v].push_back(u);
+    }
+
+    /*for(const vi &it1 : edge){
+        for(auto &it2 : it1){ cout << it2 << " "; }
+        cout << endl;
+    }*/
+
+    dfs(edge, subtree_size);
+    cout << endl;
+
+}
+
+int main()
+{
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+    	cout.tie(NULL);
+
+    int test;
+    cin >> test;
+
+    while(test--){
+        solve();
+    }
+	
+	return 0;
+}
+```
+
 
