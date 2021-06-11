@@ -111,12 +111,18 @@ using namespace std;
 typedef vector<vector<int>> vii;
 typedef vector<int> vi;
 
-void dfs(vii &edge, vi &subTree, int cur = 1, int par = -1){
+void dfs(vii &edge, vi &subTree, vi &level, int cur = 1, int par = 0){
+
     cout << cur << "\n";
+    subTree[cur] = 1;
+    level[cur] = level[par] + 1;
+
     for(int neighb : edge[cur]){
         if(neighb == par) { continue; }
 
-        dfs(edge, subTree, neighb, cur);
+        dfs(edge, subTree, level, neighb, cur);
+
+        subTree[cur] += subTree[neighb];
     }
 }
 
@@ -126,6 +132,7 @@ void solve(){
 
     vii edge(n+1);
     vi subtree_size(n+1);
+    vi level(n+1);
 
     for(int i = 0; i < n-1; i++){
         cin >> u >> v;
@@ -133,13 +140,30 @@ void solve(){
         edge[v].push_back(u);
     }
 
-    /*for(const vi &it1 : edge){
+    cout << "Adjaceny List";
+    for(const vi &it1 : edge){
         for(auto &it2 : it1){ cout << it2 << " "; }
         cout << endl;
-    }*/
-
-    dfs(edge, subtree_size);
+    }
     cout << endl;
+
+    level[0] = -1;
+
+    cout << "Depth First Search" << endl;
+    dfs(edge, subtree_size, level);
+    cout << endl;
+
+    cout << "Subtree Cout" << endl;
+    for(int i=1; i<=n; i++){
+        cout << i << "==>" << subtree_size[i] << endl;
+    }
+    cout << endl;
+
+    cout << "Level Count" << endl;
+    for(int i=1; i<=n; i++){
+        cout << i << "==>" << level[i] << endl;
+    }
+    cout << endl << "==================================" << endl;
 
 }
 
@@ -147,7 +171,7 @@ int main()
 {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
-    	cout.tie(NULL);
+    cout.tie(NULL);
 
     int test;
     cin >> test;
@@ -158,6 +182,7 @@ int main()
 	
 	return 0;
 }
+
 ```
 
 
