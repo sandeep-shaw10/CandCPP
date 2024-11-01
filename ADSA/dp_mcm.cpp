@@ -11,7 +11,7 @@ int matrixChainOrder(const vector<int>& p, int n, vector<vector<int>>& m, vector
     for (int chainLength = 2; chainLength <= n; ++chainLength) {
         for (int i = 0; i < n - chainLength + 1; ++i) {
             int j = i + chainLength - 1;
-            m[i][j] = numeric_limits<int>::max();
+            m[i][j] = INT_MAX;
             for (int k = i; k < j; ++k) {
                 // Calculate q as the cost/scalar multiplications
                 int q = m[i][k] + m[k + 1][j] + p[i] * p[k + 1] * p[j + 1];
