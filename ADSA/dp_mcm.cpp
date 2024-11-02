@@ -5,7 +5,6 @@ using namespace std;
 char letter = 'A';
 
 
-// Function to perform matrix chain multiplication and return the cost and parenthesization
 int matrixChainOrder(const vector<int>& p, int n, vector<vector<int>>& m, vector<vector<int>>& s) {
     // m[i][i] is zero since a single matrix doesn't need multiplication
     for (int chainLength = 2; chainLength <= n; ++chainLength) {
@@ -26,7 +25,6 @@ int matrixChainOrder(const vector<int>& p, int n, vector<vector<int>>& m, vector
 }
 
 
-// Function to print the parenthesization
 void printParenthesization(const vector<vector<int>>& s, int i, int j) {
     if (i == j) {
         cout << letter++ ; // Matrix indexing starts at 1 for display
@@ -91,7 +89,7 @@ int main() {
         cout << endl;
     }
 
-    // Output the MCM table
+    // Output the s table
     cout << "\ns-table:" << endl;
     for (const auto& row : s) {
         for (const auto& val : row) {
